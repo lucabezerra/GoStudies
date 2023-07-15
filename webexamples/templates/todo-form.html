@@ -1,0 +1,21 @@
+{{if .Success}}
+    <h1>Item saved!</h1>
+{{ end }}
+
+<h1>Add to-do item:</h1>
+<form method="POST">
+    <label>Description:</label><br />
+    <input type="text" name="description"><br />
+    
+    <input type="submit">
+</form>
+
+<ul>
+{{range $key, $value := .TodoItems}}
+    {{if $value.Done}}
+        <li style="color: green;">{{$value.Description}}</li>
+    {{else}}
+        <li>{{$value.Description}}</li>
+    {{end}}
+{{end}}
+</ul>
